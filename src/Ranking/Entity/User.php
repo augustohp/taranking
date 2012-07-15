@@ -6,13 +6,37 @@ use \DateTimeZone;
 use InvalidArgumentException as Argument;
 use Respect\Validation\Validator as V;
 
+/**
+ * @Entity
+ * @Table(name="user")
+ */
 class User
 {
+    /** 
+     * @Id
+     * @Column(type="integer") 
+     * @GeneratedValue
+     */
     protected $id;
+    /**
+     * @Column(type="string", length=45, unique=true)
+     */
     protected $name;
+    /**
+     * @Column(type="string", length=32)
+     */
     protected $password;
+    /**
+     * @Column(type="datetime")
+     */
     protected $created;
+    /**
+     * @Column(type="datetime")
+     */
     protected $timezone = null;
+    /**
+     * @Column(type="string", length=32)
+     */
     protected $salt=null;
 
     public function getId()
