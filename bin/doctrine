@@ -17,7 +17,7 @@ try {
     $helperSet->set(new ConnectionHelper($container->dbal), 'db');
     $helperSet->set(new EntityManagerHelper($container->entityManager), 'em');
 } catch (Exception $e) {
-    $cli->renderException($e, new ConsoleOutput());
+    die('Something very wrong happened: '.$e->getMessage());
 }
 $helperSet = ($helperSet) ?: new HelperSet();
 ConsoleRunner::run($helperSet);
