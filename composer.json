@@ -1,0 +1,9 @@
+{
+    "require": {
+        "Respect/Rest": "0.4.*",
+        "Respect/Config": "0.3.*",
+        "Respect/Validation": "0.4.*",
+        "doctrine/orm": "2.2.*",
+        "twig/twig": "1.9.*"
+    }
+}
