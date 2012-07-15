@@ -31,7 +31,7 @@ class User
      */
     protected $created;
     /**
-     * @Column(type="datetime")
+     * @Column(type="string")
      */
     protected $timezone = null;
     /**
@@ -47,7 +47,8 @@ class User
     public function setName($string)
     {
         $allowedChars = '-_';
-        V::alnum($allowedChars)->noWhitespace()->length(3, 45)->assert($string);
+        V::alnum($allowedChars)->noWhitespace()->length(3, 45)
+         ->setName('Nick')->assert($string);
         $this->name = $string;
         return $this;
     }
@@ -93,7 +94,8 @@ class User
             $this->setTimeZone($tz);
         }
         if (is_null($t)) {
-            $t = new DateTime('now', $this->getTimeZone());
+            $tz = $this->getTimeZone();
+            $t  = new DateTime('now', new DateTimeZone($tz));
         }
         $this->created = $t;
         return $this;
@@ -107,11 +109,12 @@ class User
     public function setTimeZone($mixed)
     {
         if ($mixed instanceof DateTimeZone) {
-            $this->timezone = $mixed;
+            $this->timezone = $mixed->getName();
             return $this;
         }
         try {
-            $this->timezone = new DateTimeZone($mixed);
+            $tz             = new DateTimeZone($mixed);
+            $this->timezone = $tz->getName();
         } catch (Exception $e) {
             throw new Argument('Unknown or bad timezone: '.$mixed, 0);
         }
@@ -121,6 +124,9 @@ class User
 
     public function getTimeZone()
     {
+        if (!$this->timezone)
+            $this->setTimezone('UTC');
+
         return $this->timezone;
     }
 

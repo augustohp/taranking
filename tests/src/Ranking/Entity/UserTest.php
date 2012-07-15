@@ -99,7 +99,7 @@ class UserTest extends PHPUnit_Framework_TestCase
      */
     public function testSetTimezone()
     {
-        $tz     = new DateTimeZone('America/Sao_Paulo');
+        $tz     = 'America/Sao_Paulo';
         $user   = new User();
         $fluent = $user->setTimeZone($tz);
         $this->assertInstanceOf('Ranking\Entity\User', $fluent);
@@ -126,7 +126,7 @@ class UserTest extends PHPUnit_Framework_TestCase
         $string = 'America/Sao_Paulo';
         $user   = new User();
         $user->setTimeZone($string);
-        $this->assertAttributeInstanceOf('DateTimeZone', 'timezone', $user);
+        $this->assertAttributeEquals($string, 'timezone', $user);
     }
 
     /**
@@ -150,7 +150,7 @@ class UserTest extends PHPUnit_Framework_TestCase
         $tz   = 'America/Sao_Paulo';
         $user->setCreated(null, $tz);
         $this->assertAttributeInstanceOf('DateTime', 'created', $user);
-        $this->assertAttributeInstanceOf('DateTimeZone', 'timezone', $user);
+        $this->assertAttributeEquals($tz, 'timezone', $user);
     }
 
     /**

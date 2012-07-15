@@ -1,7 +1,6 @@
 <?php
 use Respect\Config\Container;
 use Ranking\Route\Routine\Twig;
-use Twig_Environment;
 
 class TwigTest extends PHPUnit_Framework_TestCase
 {
