@@ -3,26 +3,26 @@
 {% block title %}New user{% endblock %}
 
 {% block content %}
-<h1>New User Registration</h1>
- {{alerts|e}}
-{% if alerts %}
-<ul class="alert">
-    {% for message in alerts %}
-        <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+        <h1>New User Registration</h1>
+        {% if alerts %}
+        
+        <ul class="alert">
+            {% for message in alerts %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
 
-<form action="/register" method="post">
-    <label for="name">Nick:</label>
-    <input type="text" id="name" name="name" value="{{ name }}" />
+        <form action="/register" method="post">
+            <label for="name">Nick:</label>
+            <input type="text" id="name" name="name" value="{{ name }}" />
 
-    <label for="passwd">Password:</label>
-    <input type="password" id="passwd" name="passwd1" />
+            <label for="passwd">Password:</label>
+            <input type="password" id="passwd" name="passwd1" />
 
-    <label for="passwd2">Please, repeat you password:</label>
-    <input type="password" id="passwd2" name="passwd2" />
+            <label for="passwd2">Please, repeat you password:</label>
+            <input type="password" id="passwd2" name="passwd2" />
 
-    <input type="submit" value="Register">
-</form>
+            <input type="submit" value="Register">
+        </form>
 {% endblock %}
