@@ -15,7 +15,8 @@ if (!defined('DS')) {
     define('DS', DIRECTORY_SEPARATOR);
 }
 define('PS', PATH_SEPARATOR);
-define('RANKING_ENVIROMENT', getenv('RANKING_ENVIROMENT') ?: 'production');
+define('RANKING_VERSION', '0.1.0');
+define('RANKING_ENVIROMENT', getenv('RANKING_ENVIROMENT') ?: 'development');
 define('RANKING_ROOT', realpath(__DIR__.DS.'..'));
 define('RANKING_LIBRARY', RANKING_ROOT.DS.'src');
 define('RANKING_COMPOSER',RANKING_ROOT.DS.'vendor');
