@@ -1,0 +1,28 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<h1>Welcome</h1>
+
+<p>
+    This is a simple Total Annihilation ranking system, to keep track the games
+    you play with whom you play. Who won? Who lost?
+</p>
+
+<p>
+    This is only for <strong>registered</strong> users, registration should be 
+    as simple as providing your <abbr title="Nickname">nick</abbr> and password.
+</p>
+
+<form action="/register" method="post">
+    <label for="name">Nick:</label>
+    <input type="text" id="name" name="name" />
+
+    <label for="passwd">Password:</label>
+    <input type="password" id="passwd" name="passwd1" />
+
+    <input type="submit" value="Login">
+    <a href="/register">I want to register myself</a>
+</form>
+{% endblock %}
