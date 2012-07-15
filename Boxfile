@@ -1,18 +1,24 @@
+<<<<<<< HEAD
 global:
   env:
     - APP_NAME: ranking
     - RANKING_ENVIROMENT: development
 
+=======
+>>>>>>> 81640af68125d5d917170d3d4d58f2fab85c83ec
 web1:
   name: ranking
   document_root: public
   php_version: 5.3.10
   php_extensions:
     - mysql
+<<<<<<< HEAD
   after-build:
     - "chmod a+x bin/composer.phar"
     - "chmod a+x bin/doctrine"
     - "php bin/composer.phar install"
+=======
+>>>>>>> 81640af68125d5d917170d3d4d58f2fab85c83ec
 
 db1:
   name: ranking
