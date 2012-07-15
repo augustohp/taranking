@@ -1,0 +1,19 @@
+global:
+  env:
+    - APP_NAME: ranking
+    - RANKING_ENVIROMENT: development
+
+web1:
+  name: ranking
+  document_root: public
+  php_version: 5.3.10
+  php_extensions:
+    - mysql
+  after-build:
+    - "chmod a+x bin/composer.phar"
+    - "chmod a+x bin/doctrine"
+    - "php bin/composer.phar install"
+
+db1:
+  name: ranking
+  type: mysql
