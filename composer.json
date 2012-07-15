@@ -4,6 +4,11 @@
         "Respect/Config": "0.3.*",
         "Respect/Validation": "0.4.*",
         "doctrine/orm": "2.2.*",
-        "twig/twig": "1.9.*"
+        "twig/twig": "1.9.*",
+        "symfony/console": "2.0.*",
+        "EHER/PHPUnit": "1.6"
+    },
+    "autoload": {
+        "psr-0": {"Ranking": "src/"}
     }
 }

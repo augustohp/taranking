@@ -1,0 +1,53 @@
+{
+    "hash": "2af74ba0d661d37df2050295707d8c16",
+    "packages": [
+        {
+            "package": "EHER/PHPUnit",
+            "version": "1.6"
+        },
+        {
+            "package": "Respect/Config",
+            "version": "0.3.1"
+        },
+        {
+            "package": "Respect/Rest",
+            "version": "0.4.8"
+        },
+        {
+            "package": "Respect/Validation",
+            "version": "0.4.4"
+        },
+        {
+            "package": "doctrine/common",
+            "version": "2.2.2"
+        },
+        {
+            "package": "doctrine/dbal",
+            "version": "2.2.2"
+        },
+        {
+            "package": "doctrine/orm",
+            "version": "2.2.2"
+        },
+        {
+            "package": "symfony/console",
+            "version": "v2.0.16"
+        },
+        {
+            "package": "symfony/finder",
+            "version": "v2.0.15"
+        },
+        {
+            "package": "twig/twig",
+            "version": "v1.9.0"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
+}
