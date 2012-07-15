@@ -30,8 +30,11 @@ class Twig
     /**
      * @return string|array
      */
-    public function __invoke(array $data)
+    public function __invoke(array $data=null)
     {
+        if (is_null($data))
+            return '';
+        
         if (!is_array($data) || !isset($data['_view']))
             return $data;
 
