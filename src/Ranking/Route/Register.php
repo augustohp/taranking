@@ -7,6 +7,7 @@ use \PDOException;
 use Respect\Rest\Routable;
 use Ranking\Entity\User;
 use Respect\Config\Container;
+use Respect\Validation\Exceptions\AbstractNestedException as Nested;
 
 class Register implements Routable
 {
@@ -38,16 +39,18 @@ class Register implements Routable
             
             // Everything ok, log user
             $_SESSION['user'] = $user;
-            header('HTTP/1.1 201 User created');
             header('Location: /home');
-        } catch (Respect\Validation\Exceptions\ValidationException $e) {
-            $vars['alerts'] = $e->getFullMessage();
+        } catch (Nested $e) {
+            $vars['alerts'] = array();
+            foreach ($e->getIterator(false,Nested::ITERATE_TREE) as $m) {
+                $vars['alerts'][] = $m;
+            }
             return $vars;
         } catch (PDOException $e) {
-            $vars['alerts'] = 'User already exists';
+            $vars['alerts'] = array('User already exists');
             return $vars;
         } catch (Exception $e) {
-            $vars['alerts'] = $e->getMessage();
+            $vars['alerts'] = array($e->getMessage());
             return $vars;
         }
     }

@@ -3,11 +3,13 @@
 {% block title %}Last user registrations{% endblock %}
 
 {% block content %}
-<h1>Last User Registrations</h1>
- 
-<ol class="alert">
-    {% for user in users %}
-        <li>{{ user.name }}</li>
-    {% endfor %}
-</ol>
+        <h1>Last User Registrations</h1>
+         
+        <ol class="alert">
+            {% for user in users %}
+                <li>{{ user.name }}</li>
+            {% endfor %}
+        </ol>
+
+        <a href="/" title="Go back to the welcome screen">Back</a>
 {% endblock %}

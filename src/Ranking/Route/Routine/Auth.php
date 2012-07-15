@@ -18,7 +18,7 @@ class Auth
     }
     public function __invoke()
     {
-        if (!isset($_SESSION['user']))
+        if (isset($_SESSION['user']))
             return true;
 
         header('HTTP/1.1 403 You must be authenticated to access that URL');
