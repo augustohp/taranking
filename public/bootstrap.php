@@ -8,6 +8,9 @@
  * @since 0.1.0
  * @author Augusto Pascutti <augusto@phpsp.org.br>
  */
+if (defined('RANKING_SALT')) {
+    return; // Prevent (PHPUnit) from loading this file again and again
+}
 date_default_timezone_set('UTC');
 
 // Include Composer's Autoload -------------------------------------------------

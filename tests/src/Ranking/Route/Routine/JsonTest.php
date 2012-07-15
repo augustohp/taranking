@@ -1,7 +1,8 @@
 <?php
-use Ranking\Route\Routine\Json;
+namespace Ranking\Route\Routine;
 
-class JsonTest extends PHPUnit_Framework_TestCase
+$header = array();
+class JsonTest extends \PHPUnit_Framework_TestCase
 {
     public function testArrayToJsonConversion()
     {
@@ -19,4 +20,26 @@ class JsonTest extends PHPUnit_Framework_TestCase
         unset($data['_view']);
         $this->assertEquals($encoded, json_encode($data), 'Index "_view" not removed from JSON');
     }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testHeaderModification()
+    {
+        global $header;
+
+        $data = array('user'=>'tbone');
+        $json = new Json();
+        $encoded = $json($data);
+        $this->assertGreaterThan(0, count($header));
+    }
+}
+
+if (!function_exists('Ranking\Route\Routine\header')) {
+function header($string) 
+{
+    global $header;
+    $header[$string] = $string;
+    return true;
+}
 }
