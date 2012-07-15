@@ -19,6 +19,7 @@ define('RANKING_VERSION', '0.1.0');
 define('RANKING_ENVIROMENT', getenv('RANKING_ENVIROMENT') ?: 'development');
 define('RANKING_ROOT', realpath(__DIR__.DS.'..'));
 define('RANKING_LIBRARY', RANKING_ROOT.DS.'src');
+define('RANKING_CONF', RANKING_ROOT.DS.'conf');
 define('RANKING_COMPOSER',RANKING_ROOT.DS.'vendor');
 define('RANKING_DOCTRINE_BIN', RANKING_COMPOSER.DS.'doctrine'.DS.'orm'.DS.'bin');
 define('RANKING_SALT', getenv('RANKING_SALT') ?: '4l:8_+:7|WxsE+O+JN&w_Wr$mRc?0l88oRTD$OcJuOI^Qk&852H1)%W{yc+-BmwY');
