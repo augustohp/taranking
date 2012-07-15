@@ -10,6 +10,7 @@ web1:
   php_extensions:
     - apc
     - pdo_mysql
+    - pdo_sqlite
     - zip
     - timezonedb
     - mbstring

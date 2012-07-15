@@ -1,34 +1,23 @@
 #!/usr/bin/env php
 <?php
+use Respect\Config\Container;
+use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
+use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Console\Helper\HelperSet;
+
 define('DS', DIRECTORY_SEPARATOR);
 require __DIR__.DS.'..'.DS.'public'.DS.'bootstrap.php';
 
-$classLoader = new \Doctrine\Common\ClassLoader('Doctrine');
-$classLoader->register();
-
-$classLoader = new \Doctrine\Common\ClassLoader('Symfony', 'Doctrine');
-$classLoader->register();
-
-$configFile = getcwd() . DIRECTORY_SEPARATOR . 'cli-config.php';
-
-$helperSet = null;
-if (file_exists($configFile)) {
-    if ( ! is_readable($configFile)) {
-        trigger_error(
-            'Configuration file [' . $configFile . '] does not have read permission.', E_ERROR
-        );
-    }
-
-    require $configFile;
-
-    foreach ($GLOBALS as $helperSetCandidate) {
-        if ($helperSetCandidate instanceof \Symfony\Component\Console\Helper\HelperSet) {
-            $helperSet = $helperSetCandidate;
-            break;
-        }
-    }
+try {
+    $configFile = RANKING_ROOT.DS.'conf'.DS.'Doctrine.ini';
+    $container  = new Container($configFile);
+    $helperSet  = new HelperSet();
+    $helperSet->set(new ConnectionHelper($container->dbal), 'db');
+    $helperSet->set(new EntityManagerHelper($container->entityManager), 'em');
+} catch (Exception $e) {
+    $cli->renderException($e, new ConsoleOutput());
 }
-
-$helperSet = ($helperSet) ?: new \Symfony\Component\Console\Helper\HelperSet();
-
-\Doctrine\ORM\Tools\Console\ConsoleRunner::run($helperSet);
+$helperSet = ($helperSet) ?: new HelperSet();
+ConsoleRunner::run($helperSet);
