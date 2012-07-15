@@ -1,0 +1,13 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Last user registrations{% endblock %}
+
+{% block content %}
+<h1>Last User Registrations</h1>
+ 
+<ol class="alert">
+    {% for user in users %}
+        <li>{{ user.name }}</li>
+    {% endfor %}
+</ol>
+{% endblock %}
