@@ -9,7 +9,7 @@ web1:
   php_version: 5.3.10
   php_extensions:
     - mysql
-  after-build:
+  after_build:
     - "chmod a+x bin/composer.phar"
     - "chmod a+x bin/doctrine"
     - "php bin/composer.phar install"
