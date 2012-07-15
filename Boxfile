@@ -15,9 +15,7 @@ web1:
     - timezonedb
     - mbstring
   after_build:
-    - "chmod a+x bin/composer.phar"
-    - "chmod a+x bin/doctrine"
-    - "php bin/composer.phar install"
+    - "make install"
 
 db1:
   name: ranking
