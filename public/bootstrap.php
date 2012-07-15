@@ -30,7 +30,7 @@ define('RANKING_DB_HOST', getenv('RANKING_DB_HOST') ?: '');
 define('RANKING_DB_USER', getenv('RANKING_DB_USER') ?: '');
 define('RANKING_DB_PASSWD', getenv('RANKING_DB_PASSWD') ?: '');
 define('RANKING_DB_NAME', getenv('RANKING_DB_NAME') ?: '');
-define('RANKING_DB_DRIVER', getenv('RANKING_DB_NAME') ?: 'pdo_sqlite');
+define('RANKING_DB_DRIVER', getenv('RANKING_DB_DRIVER') ?: 'pdo_sqlite');
 define('RANKING_DOCTRINE_PROXY_DIR', RANKING_LIBRARY.DS.'Ranking'.DS.'Proxy');
 
 // Enviroment-aware configurations ---------------------------------------------
