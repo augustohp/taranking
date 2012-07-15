@@ -8,7 +8,11 @@ web1:
   document_root: public
   php_version: 5.3.10
   php_extensions:
-    - mysql
+    - apc
+    - pdo_mysql
+    - zip
+    - timezonedb
+    - mbstring
   after_build:
     - "chmod a+x bin/composer.phar"
     - "chmod a+x bin/doctrine"
