@@ -17,7 +17,7 @@ doctrine: permission
 	bin/doctrine orm:schema-tool:update --force
 
 install: permission composer doctrine
-	@echo "Fixing permissions, getting dependencies and creating/updating database"
+	@echo "Fixed permissions, got dependencies and created/updated database"
 
 test:
 	@cd tests; phpunit .
