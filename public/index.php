@@ -15,9 +15,9 @@ $r                   = new Respect\Rest\Router();
 $r->isAutoDispatched = false;
 // Routes ----------------------------------------------------------------------
 
-$r->get('/', function() {
-    return array('_view'=>'index.html');
-});
+$r->get('/', function() { return array('_view'=>'index.html');});
+$r->get('/users/login', 'Ranking\Route\Login');
+$r->post('/users/login', 'Ranking\Route\Login');
 $r->get('/users/last', 'Ranking\Route\RecentUsers');
 $r->get('/register', 'Ranking\Route\Register');
 $r->post('/register', 'Ranking\Route\Register');
@@ -25,11 +25,15 @@ $r->get('/home', 'Ranking\Route\Home')->by($authenticated);
 
 // Routines --------------------------------------------------------------------
 
-// Appends API version variable for ALL routes
+// Appends API version variable and logged user identity for ALL routes
 $r->always('Through', function() {
     return function($data) {
-        if (is_array($data)) {
-            $data['version'] = RANKING_VERSION;
+        if (!is_array($data)) {
+            return $data;
+        }
+        $data['version'] = RANKING_VERSION;
+        if (isset($_SESSION['user'])) {
+            $data['user'] = $_SESSION['user'];
         }
         return $data;
     };
