@@ -20,7 +20,12 @@
 
         <fieldset>
             <legend>Want to see your own?</legend>
+
             <form action="/users/login" method="post">
+{% if alert %}
+                <p class="alert"> {{ alert }} </p>
+
+{% endif %}
                 <label for="name">Nick:</label>
                 <input type="text" id="name" name="name" />
 

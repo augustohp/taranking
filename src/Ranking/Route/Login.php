@@ -56,7 +56,10 @@ class Login implements Routable
             }
             $_SESSION['user'] = $userIdentity;
             header('Location: /home');
-        }  catch (Argument $e) {
+        } catch (Argument $e) {
+            $vars['alert'] = $e->getMessage();
+            return $vars;
+        } catch (Runtime $e) {
             $vars['alert'] = $e->getMessage();
             return $vars;
         }

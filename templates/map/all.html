@@ -1,0 +1,45 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}New map{% endblock %}
+
+{% block content %}
+        <h1>Availiable Maps</h1>
+
+        <p>
+            Below you can see all the registered Total Annihilation maps that
+            are availiable to use in your games.
+        </p>
+        <p>
+            If you can not find the map you need, you can also register it here.
+        </p>
+
+        <fieldset>
+            <legend>New map information</legend>
+            
+            <form action="/maps" method="post">
+{% if alerts %}
+        
+                <ul class="alert">
+{% for message in alerts %}
+                    <li>{{ message }}</li>
+{% endfor %}
+                </ul>
+
+{% endif %}
+{% if notice %}
+                <p class="notice"> {{ notice }} </p>
+                
+{% endif %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{ name }}" />
+
+                <input type="submit" value="Create">
+            </form>
+        </fieldset>
+
+        <ol>
+{% for map in maps %}
+            <li> <a href="/maps/{{ map.id }}">{{ map.name }}</a> </li>
+{% endfor %}
+        </ol>
+{% endblock %}
