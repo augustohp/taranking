@@ -4,8 +4,8 @@ namespace Ranking\Route;
 use \Exception;
 use \InvalidArgumentException as Argument;
 use \PDOException;
-use Respect\Rest\Routable;
 use Ranking\Entity\User;
+use Respect\Rest\Routable;
 use Respect\Config\Container;
 use Respect\Validation\Exceptions\AbstractNestedException as Nested;
 
