@@ -15,12 +15,13 @@ $r                   = new Respect\Rest\Router();
 $r->isAutoDispatched = false;
 // Routes ----------------------------------------------------------------------
 
-$r->get('/', function() { return array('_view'=>'index.html');});
+$r->get('/', 'Ranking\Route\Login');
+$r->get('/users/logout', 'Ranking\Route\Logout');
 $r->get('/users/login', 'Ranking\Route\Login');
 $r->post('/users/login', 'Ranking\Route\Login');
 $r->get('/users/last', 'Ranking\Route\RecentUsers');
-$r->get('/register', 'Ranking\Route\Register');
-$r->post('/register', 'Ranking\Route\Register');
+$r->get('/users/register', 'Ranking\Route\Register');
+$r->post('/users/register', 'Ranking\Route\Register');
 $r->get('/home', 'Ranking\Route\Home')->by($authenticated);
 
 // Routines --------------------------------------------------------------------

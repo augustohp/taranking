@@ -3,5 +3,9 @@
 {% block title %}{{ user.name }}'s Home{% endblock %}
 
 {% block content %}
-<h1>Welcome {{ user.name }}</h1>
+    {% if notice %}
+    <p class="notice"> {{ notice }} </p>
+
+    {% endif %}
+    <h1>Welcome {{ user.name }}</h1>
 {% endblock %}

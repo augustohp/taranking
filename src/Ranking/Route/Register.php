@@ -39,7 +39,7 @@ class Register implements Routable
             
             // Everything ok, log user
             $_SESSION['user'] = $user;
-            header('Location: /home');
+            header('Location: /home?registered=true');
         } catch (Nested $e) {
             $vars['alerts'] = array();
             foreach ($e->getIterator(false,Nested::ITERATE_TREE) as $m) {
