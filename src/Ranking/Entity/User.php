@@ -3,7 +3,8 @@ namespace Ranking\Entity;
 
 use \DateTime;
 use \DateTimeZone;
-use InvalidArgumentException as Argument;
+use \Exception;
+use \InvalidArgumentException as Argument;
 use Respect\Validation\Validator as V;
 
 /**

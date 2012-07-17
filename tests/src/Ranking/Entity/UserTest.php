@@ -130,11 +130,23 @@ class UserTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @depends testGetTimezone
+     * @covers Ranking\Entity\User::setTimeZone
+     */
+    public function testSetTimezoneWithValidDateTimeZoneObject()
+    {
+        $string = 'America/Sao_Paulo';
+        $tz     = new DateTimeZone($string);
+        $user   = new User();
+        $user->setTimeZone($tz);
+        $this->assertAttributeEquals($string, 'timezone', $user);
+    }
+
+    /**
      * @covers Ranking\Entity\User::setTimeZone
      */
     public function testSetTimezoneWithInvalidString()
     {
-        $this->markTestIncomplete("Don't know why this is failing");
         $this->setExpectedException('InvalidArgumentException');
         $string = 'Whatever';
         $user   = new User();
