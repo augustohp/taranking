@@ -30,8 +30,11 @@ class Twig
     /**
      * @return string|array
      */
-    public function __invoke(array $data=null)
+    public function __invoke($data=null)
     {
+        if (is_string($data)) {
+            return $data;
+        }
         if (is_null($data))
             return '';
         

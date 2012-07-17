@@ -25,4 +25,11 @@ class TwigTest extends PHPUnit_Framework_TestCase
         $data = array('_view'=>'index.html');
         $this->assertGreaterThan(0, strlen($twig($data)));
     }
+
+    public function testRanderStringData()
+    {
+        $data = 'this is a string';
+        $twig = new Twig;
+        $this->assertEquals($data, $twig($data));
+    }
 }
