@@ -1,0 +1,30 @@
+        <nav>
+            <ul>
+{% if user %}
+                <li>
+                    <a href="/users/{{ user.id }}" title="Go to {{ user.name }}'s Home">
+                        Home
+                    </a>
+                </li>
+{% else %}
+                <li>
+                    <a href="/users/login" title="Login page">
+                        Login
+                    </a>
+                </li>
+{% endif %}
+                <li>
+                    <a href="/maps" title="Map list/creation">Maps</a>
+                </li>
+                <li>
+                    <a href="/users/latest" title="Latest users registered">
+                        Latest registrations
+                    </a>
+                </li>
+{% if user %}
+                <li>
+                    <a href="/users/logout" title="Logout">Logout</a>
+                </li>
+{% endif %}
+            </ul>
+        </nav>
