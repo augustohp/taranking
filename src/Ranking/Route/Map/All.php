@@ -30,7 +30,8 @@ class All implements Routable
         $all   = $query->getResult();
         $vars['maps'] = $all;
 
-        if ($_GET['created']) {
+        if (isset($_GET['created'])) {
+            header('HTTP/1.1 201 Map created');
             $vars['notice'] = 'Map created';
         }
         return $vars;
