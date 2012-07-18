@@ -55,7 +55,7 @@ class Login implements Routable
                 throw new Runtime('Nick+Password not found');
             }
             $_SESSION['user'] = $userIdentity;
-            header('Location: /home');
+            header('Location: /users/'.$userIdentity->getId());
         } catch (Argument $e) {
             $vars['alert'] = $e->getMessage();
             return $vars;
