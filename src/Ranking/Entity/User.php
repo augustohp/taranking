@@ -45,11 +45,16 @@ class User
         return $this->id;
     }
 
-    public function setName($string)
+    public static function getNameValidator()
     {
         $allowedChars = '-_';
-        V::alnum($allowedChars)->noWhitespace()->length(3, 45)
-         ->setName('Nick')->assert($string);
+        return V::alnum($allowedChars)->noWhitespace()->length(3, 45)
+                ->setName('Nick');
+    }
+
+    public function setName($string)
+    {
+        self::getNameValidator()->assert($string);
         $this->name = $string;
         return $this;
     }
