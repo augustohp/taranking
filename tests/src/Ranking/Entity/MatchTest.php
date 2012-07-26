@@ -52,6 +52,15 @@ class MatchTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException PHPUnit_Framework_Error
+     */
+    public function testSetCreatorWithInvalidArgument()
+    {
+        $value = new StdClass;
+        $this->match->setCreator($value);
+    }
+
+    /**
      * @covers Ranking\Entity\Match::setCreated
      */
     public function testSetCreatedWithoutAnyArgument()
@@ -84,6 +93,15 @@ class MatchTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException PHPUnit_Framework_Error
+     */
+    public function testSetCreatedWithInvalidArgument()
+    {
+        $value = new StdClass;
+        $this->match->setCreated($value);
+    }
+
+    /**
      * @covers Ranking\Entity\Match::setPlayed
      */
     public function testSetPlayedWithoutAnyArgument()
@@ -113,6 +131,15 @@ class MatchTest extends PHPUnit_Framework_TestCase
     {
         list($match, $when) = $args;
         $this->assertEquals($when, $match->getPlayed());
+    }
+
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     */
+    public function testSetPlayedWithInvalidArgument()
+    {
+        $value = new StdClass;
+        $this->match->setPlayed($value);
     }
 
     /**

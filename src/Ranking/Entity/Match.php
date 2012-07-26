@@ -45,7 +45,7 @@ class Match
         return $this->id;
     }
 
-    public function setPlayed($when=null)
+    public function setPlayed(DateTime $when=null)
     {
         if (is_null($when)) {
             $when = new DateTime;
@@ -60,7 +60,7 @@ class Match
         return $this->played;
     }
 
-    public function setCreated($when=null)
+    public function setCreated(DateTime $when=null)
     {
         if (is_null($when)) {
             $when = new DateTime;
