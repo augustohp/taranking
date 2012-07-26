@@ -162,4 +162,12 @@ class MatchTest extends PHPUnit_Framework_TestCase
         list($match, $map) = $args;
         $this->assertEquals($map, $match->getMap());
     }
+
+    /**
+     * @covers Ranking\Entity\Match::getTeams
+     */
+    public function testGetTeams()
+    {
+        $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $this->match->getTeams());
+    }
 }
