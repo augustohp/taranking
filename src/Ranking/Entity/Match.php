@@ -107,4 +107,9 @@ class Match
     {
         return $this->map;
     }
+
+    public function getTeams()
+    {
+        return $this->teams;
+    }
 }
