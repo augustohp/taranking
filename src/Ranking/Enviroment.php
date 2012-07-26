@@ -27,7 +27,7 @@ class Enviroment
     public function getName()
     {
         if (!$this->name) {
-            $this->name = getenv('RANKING_ENVIROMENT') ?: self::DEFAULT_NAME ;
+            $this->name = getenv('RANKING_ENVIRONMENT') ?: self::DEFAULT_NAME ;
         }
         
         return $this->name;
