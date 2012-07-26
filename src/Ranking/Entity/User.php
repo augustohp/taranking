@@ -40,6 +40,11 @@ class User
      */
     protected $salt=null;
 
+    public function __toString()
+    {
+        return 'Ranking\Entity\User: '.$this->getName();
+    }
+
     public function getId()
     {
         return $this->id;

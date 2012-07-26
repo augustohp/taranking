@@ -25,6 +25,11 @@ class Map
      */
     protected $created;
 
+    public function __toString()
+    {
+        return 'Ranking\Entity\Map: '.$this->getName();
+    }
+
     public function getId()
     {
         return $this->id;

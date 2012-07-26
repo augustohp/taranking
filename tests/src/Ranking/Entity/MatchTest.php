@@ -22,11 +22,16 @@ class MatchTest extends PHPUnit_Framework_TestCase
 
     public function _propertyAndValidValue() 
     {
+        $user = new User();
+        $user->setName('testbot');
+        $map  = new Map();
+        $map->setName('Test Dome');
+
         return array(
             array('created', new DateTime),
             array('played', new DateTime),
-            array('creator', new User),
-            array('map', new Map)
+            array('creator', $user),
+            array('map', $map)
         );
     }
 
