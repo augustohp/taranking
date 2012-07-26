@@ -28,7 +28,7 @@ class Team
     protected $player;
     /**
      * @var string
-     * @Column(type="string", name="user_id")
+     * @Column(type="string")
      */
     protected $race;
     /**
