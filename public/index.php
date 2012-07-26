@@ -43,6 +43,9 @@ $r->always('Through', function() {
         $data['version']         = RANKING_VERSION;
         $userNotAlreadySetInData = !isset($data['user']);
         $userLoggedIn            = isset($_SESSION['user']);
+        if ($userLoggedIn) {
+            $data['user_home_url'] = '/users/'.$_SESSION['user']->getName();
+        }
         if ($userLoggedIn && $userNotAlreadySetInData) {
             $data['user'] = $_SESSION['user'];
         }
