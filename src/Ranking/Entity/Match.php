@@ -1,6 +1,11 @@
 <?php
 namespace Ranking\Entity;
 
+use \DateTime;
+use Respect\Validation\Validator as V;
+use Ranking\Entity\Map;
+use Ranking\Entity\User;
+
 /**
  * @Entity
  * @Table(name="match")
@@ -40,9 +45,29 @@ class Match
         return $this->id;
     }
 
+    public function setPlayed($when=null)
+    {
+        if (is_null($when)) {
+            $when = new DateTime;
+        }
+        V::date()->setName('Played')->assert($when);
+        $this->played = $when;
+        return $this;
+    }
+
     public function getPlayed()
     {
         return $this->played;
+    }
+
+    public function setCreated($when=null)
+    {
+        if (is_null($when)) {
+            $when = new DateTime;
+        }
+        V::date()->setName('Crated')->assert($when);
+        $this->created = $when;
+        return $this;
     }
 
     public function getCreated()
@@ -50,9 +75,21 @@ class Match
         return $this->created;
     }
 
+    public function setCreator(User $creator)
+    {
+        $this->creator = $creator;
+        return $this;
+    }
+
     public function getCreator()
     {
         return $this->creator;
+    }
+
+    public function setMap(Map $map)
+    {
+        $this->map = $map;
+        return $this;
     }
 
     public function getMap()
