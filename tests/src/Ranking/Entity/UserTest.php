@@ -234,7 +234,7 @@ class UserTest extends PHPUnit_Framework_TestCase
             array(null),
             array(0),
             array('12345'),
-            array('12345678901234567890123456789012345678901234567890'),
+            array('12345678901234567890123456789012345678901234567890'), // length: 50
             array('#notavalidpassword#')
         );
     }
