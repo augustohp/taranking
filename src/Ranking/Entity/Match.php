@@ -31,12 +31,12 @@ class Match
     protected $created;
     /**
      * @var Ranking\Entity\User
-     * @Column(type="integer")
+     * @Column(type="integer", name="user_id")
      */
     protected $creator;
     /**
      * @var Ranking\Entity\Map
-     * @Column(type="integer")
+     * @Column(type="integer", name="map_id")
      */
     protected $map;
 
