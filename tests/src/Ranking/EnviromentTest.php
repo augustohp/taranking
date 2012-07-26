@@ -6,7 +6,7 @@ class EnviromentTest extends PHPUnit_Framework_TestCase
     public function _enviromentVars()
     {
         return array(
-            array('RANKING_ENVIROMENT', 'test', 'getName'),
+            array('RANKING_ENVIRONMENT', 'test', 'getName'),
             array('RANKING_SALT', 'test', 'getSalt'),
             array('RANKING_DB_HOST', 'test', 'getDatabaseHost'),
             array('RANKING_DB_USER', 'test', 'getDatabaseUser'),
