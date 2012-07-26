@@ -1,4 +1,8 @@
 <?php
+use Ranking\Route\Routine\Auth;
+use Ranking\Route\Routine\Twig;
+use Ranking\Route\Routine\Json;
+use Ranking\Entity\User;
 /**
  * Routes declaration.
  *
@@ -9,9 +13,10 @@
  */
 require 'bootstrap.php';
 
-$auth                = new Ranking\Route\Routine\Auth;
+$auth                = new Auth;
 $authenticated       = function() use($auth) { return $auth(); };
 $r                   = new Respect\Rest\Router();
+$validUsername       = function($username) { return User::getNameValidator()->validate($username); };
 $r->isAutoDispatched = false;
 // Routes ----------------------------------------------------------------------
 
@@ -22,7 +27,7 @@ $r->post('/users/login', 'Ranking\Route\Login');
 $r->get('/users/latest'  , 'Ranking\Route\RecentUsers');
 $r->get('/users/register' , 'Ranking\Route\Register');
 $r->post('/users/register', 'Ranking\Route\Register');
-$r->get('/users/*', 'Ranking\Route\Home')->by($authenticated);
+$r->get('/users/*', 'Ranking\Route\Home')->by($authenticated)->when($validUsername);
 $r->get('/maps'   , 'Ranking\Route\Map\All');
 $r->post('/maps'  , 'Ranking\Route\Map\Post')->by($authenticated);
 $r->post('/maps/*', 'Ranking\Route\Map\One');
@@ -35,8 +40,10 @@ $r->always('Through', function() {
         if (!is_array($data)) {
             return $data;
         }
-        $data['version'] = RANKING_VERSION;
-        if (isset($_SESSION['user'])) {
+        $data['version']         = RANKING_VERSION;
+        $userNotAlreadySetInData = !isset($data['user']);
+        $userLoggedIn            = isset($_SESSION['user']);
+        if ($userLoggedIn && $userNotAlreadySetInData) {
             $data['user'] = $_SESSION['user'];
         }
         return $data;
@@ -44,8 +51,8 @@ $r->always('Through', function() {
 });
 // Content negotiation setup for ALL routes
 $r->always('Accept', array(
-    'text/html'        => new Ranking\Route\Routine\Twig,
-    'text/plain'       => $json = new Ranking\Route\Routine\Json,
+    'text/html'        => new Twig,
+    'text/plain'       => $json = new Json,
     'application/json' => $json,
     'text/json'        => $json
 ));
