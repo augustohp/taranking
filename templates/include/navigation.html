@@ -1,8 +1,8 @@
         <nav>
             <ul>
-{% if user %}
+{% if user_home_url %}
                 <li>
-                    <a href="/users/{{ user.id }}" title="Go to {{ user.name }}'s Home">
+                    <a href="{{ user_home_url }}" title="Go to your home screen">
                         Home
                     </a>
                 </li>
