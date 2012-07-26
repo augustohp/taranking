@@ -18,17 +18,19 @@ class Team
     protected $id;
     /**
      * @var Ranking\Entity\Match
-     * @Column(type="integer", name="match_id")
+     * @ManyToOne(targetEntity="Ranking\Entity\Match", inversedBy="teams")
+     * @JoinColumn(name="match_id", referencedColumnName="id", nullable=false)
      */
     protected $match;
     /**
      * @var Ranking\Entity\User
-     * @Column(type="integer", name="user_id")
+     * @ManyToOne(targetEntity="Ranking\Entity\User")
+     * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     protected $player;
     /**
      * @var string
-     * @Column(type="string")
+     * @Column(type="string", length=4)
      */
     protected $race;
     /**

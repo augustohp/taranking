@@ -5,10 +5,11 @@ use \DateTime;
 use Respect\Validation\Validator as V;
 use Ranking\Entity\Map;
 use Ranking\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @Entity
- * @Table(name="match")
+ * @Table(name="`match`")
  */
 class Match
 {
@@ -39,6 +40,16 @@ class Match
      * @Column(type="integer", name="map_id")
      */
     protected $map;
+    /**
+     * @var Doctrine\Common\Collections\ArrayCollection
+     * @OneToMany(targetEntity="Ranking\Entity\Team", mappedBy="match")
+     */
+    protected $teams;
+
+    public function __construct()
+    {
+        $this->teams = new ArrayCollection;
+    }
 
     public function getId()
     {
