@@ -1,5 +1,8 @@
 <?php
+use InvalidArgumentException as Argument;
 use Ranking\Entity\Map;
+use Respect\Validation\Validator as V;
+use Respect\Validation\Exceptions\AbstractNestedException as Nested;
 
 class MapTest extends PHPUnit_Framework_TestCase
 {
@@ -58,6 +61,26 @@ class MapTest extends PHPUnit_Framework_TestCase
         $fluent = $map->setName($name);
         $this->assertEquals($name, $map->getName());
         $this->assertInstanceOf('Ranking\Entity\Map', $fluent);
+    }
+
+    /**
+     * @depends testSetName
+     * @covers Ranking\Entity\Map::__toString
+     */
+    public function testToStringConvertion()
+    {
+        $name          = 'Test Dome';
+        $map           = new Map;
+        $validatorName = Map::getNameValidator();
+        $map->setName($name);
+        try {
+            V::attribute('name', $validatorName)->assert($map);
+            V::string()->endsWith($name)->setName('toString')->assert((string) $map);
+        } catch (Nested $e) {
+            $this->fail('Validation Exception: '.$e->getFullMessage());
+        } catch (Exception $e) {
+            $this->fail('Ugly Exception: '.$e);
+        }
     }
 
     /**
