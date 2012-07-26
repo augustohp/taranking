@@ -35,11 +35,16 @@ class Map
         return $this->id;
     }
 
-    public function setName($string)
+    public static function getNameValidator()
     {
         $allowedChars = '-_[]/\\.';
-        V::alnum($allowedChars)->length(5, 255)
-         ->setName('Map name')->assert($string);
+        return V::alnum($allowedChars)->length(5, 255)
+         ->setName('Map name');
+    }
+
+    public function setName($string)
+    {
+        self::getNameValidator()->assert($string);
         $this->name = $string;
         return $this;
     }

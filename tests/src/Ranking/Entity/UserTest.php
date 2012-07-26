@@ -1,5 +1,7 @@
 <?php
 use Ranking\Entity\User;
+use Respect\Validation\Validator as V;
+use Respect\Validation\Exceptions\AbstractNestedException as Nested;
 
 class UserTest extends PHPUnit_Framework_TestCase
 {
@@ -58,6 +60,26 @@ class UserTest extends PHPUnit_Framework_TestCase
         $fluent = $user->setName($name);
         $this->assertEquals($name, $user->getName());
         $this->assertInstanceOf('Ranking\Entity\User', $fluent);
+    }
+
+    /**
+     * @depends testSetName
+     * @covers Ranking\Entity\User::__toString
+     */
+    public function testToStringConvertion()
+    {
+        $name          = 'testbot';
+        $user          = new User;
+        $validatorName = User::getNameValidator();
+        $user->setName($name);
+        try {
+            V::attribute('name', $validatorName)->assert($user);
+            V::string()->endsWith($name)->setName('toString')->assert((string) $user);
+        } catch (Nested $e) {
+            $this->fail('Validation Exception: '.$e->getFullMessage());
+        } catch (Exception $e) {
+            $this->fail('Ugly Exception: '.$e);
+        }
     }
 
     /**
