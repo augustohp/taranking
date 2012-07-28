@@ -74,8 +74,14 @@ class Team
         )->setName('Race');
     }
 
+    public static function filterRace($race)
+    {
+        return ucfirst(strtolower($race));
+    }
+
     public function setRace($race)
     {
+        $race = self::filterRace($race);
         self::getRaceValidator()->assert($race);
         $this->race = $race;
         return $this;
