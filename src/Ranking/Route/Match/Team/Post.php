@@ -34,9 +34,6 @@ class Post implements Routable
         class_exists('Ranking\Validation\Rules\Id', true);
     }
 
-    /**
-     * @todo Refator user_id validator
-     */
     public function post()
     {
         V::key('user', V::instance('Ranking\Entity\User')->setName('Logged user'))->assert($_SESSION);

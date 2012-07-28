@@ -16,6 +16,8 @@ class UsersToTeams implements IteratorAggregate
     public function __construct()
     {
         $this->teams = array();
+        // Loading custom Validation Rules
+        class_exists('Ranking\Validation\Rules\Team', true);
     }
 
     public function __toString()
@@ -33,22 +35,25 @@ class UsersToTeams implements IteratorAggregate
         if (is_null($user)) {
             $validator = V::arr()->notEmpty()->setName('No teams');
         } else {
-            $sameUserValidator    = V::not(V::equals($user)->setName('Same user'))->setName('Not same user');
-            $notSameUserValidator = V::attribute('player', $sameUserValidator);
-            $validator            = V::arr()->notEmpty()->each($notSameUserValidator)->setName('User in array');
+            $sameUserValidator     = V::not(V::equals($user)->setName('Same user'))->setName('Not same user');
+            $notSameUserValidator  = V::attribute('player', $sameUserValidator);
+            $userInstanceValidator = V::instance('Ranking\Entity\Team')->setName('Team instance');
+            $teamValidator         = V::team();
+            $allUserValidator      = V::allOf($userInstanceValidator,
+                                              $notSameUserValidator,
+                                              $teamValidator);
+            $validator             = V::arr()->notEmpty()->each($allUserValidator)->setName('User in array');
         }
         return V::attribute('teams', $validator);
     }
 
     public function addUser(User $user, $race=self::DEFAULT_RACE)
     {
-        V::instance('Ranking\Entity\User')
-         ->setName('User Instance')
-         ->assert($user);
         if (count($this->teams) > 0)
             self::getUserValidator($user)->assert($this);
         $team = $this->getTeamFromUser($user, $race);
-        $hash = spl_object_hash($user);
+        V::team()->assert($team);
+        $hash               = spl_object_hash($team);
         $this->teams[$hash] = $team;
         return $this;
     }
