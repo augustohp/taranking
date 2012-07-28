@@ -1,4 +1,4 @@
-Total Annihilation Ranking
+Total Annihilation Ranking [![Build Status](https://secure.travis-ci.org/augustohp/taranking.png)](http://travis-ci.org/Respect/Validation)
 ==========================
 
 A basic API for ranking players in [*Total Annihilation*](http://tauniverse.com) games.
