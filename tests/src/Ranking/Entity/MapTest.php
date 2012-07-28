@@ -1,10 +1,14 @@
 <?php
+namespace Ranking\Entity;
+
+use \DateTime;
+use \ReflectionClass;
 use InvalidArgumentException as Argument;
 use Ranking\Entity\Map;
 use Respect\Validation\Validator as V;
 use Respect\Validation\Exceptions\AbstractNestedException as Nested;
 
-class MapTest extends PHPUnit_Framework_TestCase
+class MapTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers Ranking\Entity\Map::getId

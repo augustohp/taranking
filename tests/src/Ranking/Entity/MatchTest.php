@@ -1,11 +1,16 @@
 <?php
+namespace Ranking\Entity;
+
+use \StdClass;
+use \DateTime;
+use \ReflectionClass;
 use InvalidArgumentException as Argument;
 use Ranking\Entity\Match;
 use Ranking\Entity\User;
 use Ranking\Entity\Map;
 use Ranking\Entity\Team;
 
-class MatchTest extends PHPUnit_Framework_TestCase
+class MatchTest extends \PHPUnit_Framework_TestCase
 {
     protected $match, $user, $map;
 

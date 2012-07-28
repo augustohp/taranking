@@ -1,9 +1,14 @@
 <?php
+namespace Ranking\Entity;
+
+use StdClass;
+use \DateTime;
+use \ReflectionClass;
 use Ranking\Entity\Team;
 use Ranking\Entity\User;
 use Ranking\Entity\Match;
 
-class TeamTest extends PHPUnit_Framework_TestCase
+class TeamTest extends \PHPUnit_Framework_TestCase
 {
     protected $team, $user, $match;
 

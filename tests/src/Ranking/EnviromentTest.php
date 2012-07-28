@@ -1,7 +1,9 @@
 <?php
+namespace Ranking;
+
 use Ranking\Enviroment;
 
-class EnviromentTest extends PHPUnit_Framework_TestCase
+class EnviromentTest extends \PHPUnit_Framework_TestCase
 {
     public function _enviromentVars()
     {
