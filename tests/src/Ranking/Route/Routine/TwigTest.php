@@ -1,8 +1,10 @@
 <?php
+namespace Ranking\Route\Routine;
+
 use Respect\Config\Container;
 use Ranking\Route\Routine\Twig;
 
-class TwigTest extends PHPUnit_Framework_TestCase
+class TwigTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructWithoutArguments()
     {

@@ -1,9 +1,14 @@
 <?php
+namespace Ranking\Entity;
+
+use \DateTime;
+use \DateTimeZone;
+use \ReflectionClass;
 use Ranking\Entity\User;
 use Respect\Validation\Validator as V;
 use Respect\Validation\Exceptions\AbstractNestedException as Nested;
 
-class UserTest extends PHPUnit_Framework_TestCase
+class UserTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
