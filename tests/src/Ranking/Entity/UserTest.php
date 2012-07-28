@@ -5,6 +5,67 @@ use Respect\Validation\Exceptions\AbstractNestedException as Nested;
 
 class UserTest extends PHPUnit_Framework_TestCase
 {
+
+    /**
+     * @covers Ranking\Entity\User::setId
+     * @expectedException PHPUnit_Framework_Error
+     */
+    public function testSetIdWithNothing()
+    {
+        $user = new User;
+        $user->setId();
+    }
+
+    public function _validId()
+    {
+        return array(
+            array(1),
+            array(5),
+            array(PHP_INT_MAX)
+        );
+    }
+
+    /**
+     * @dataProvider _validId
+     * @covers Ranking\Entity\User::getIdValidator
+     */
+    public function testGetIdValidator($id)
+    {
+        $this->assertTrue(User::getIdValidator()->validate($id));   
+    }
+
+    /**
+     * @dataProvider _validId
+     * @covers Ranking\Entity\User::setId
+     */
+    public function testSetIdWithValidValue($id)
+    {
+        $user = new User;
+        $instance = $user->setId($id);
+        $this->assertEquals($user, $instance, 'Broken fluent interface');
+        $this->assertAttributeEquals($id, 'id', $user, 'Id not correctly set on property');
+    }
+
+    public function _invalidId()
+    {
+        return array(
+            array(''),
+            array('a'),
+            array(0)
+        );
+    }
+
+    /**
+     * @dataProvider _invalidId
+     * @covers Ranking\Entity\User::setId
+     * @expectedException InvalidArgumentException
+     */
+    public function testSetIdWithInvalidValue($id)
+    {
+        $user = new User;
+        $user->setId($id);
+    }
+
     /**
      * @covers Ranking\Entity\User::getId
      */
