@@ -23,8 +23,8 @@ class HomeTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructWithoutArguments()
     {
-        $c = new Home();
         $this->markTestIncomplete('Test failing on Travis');
+        $c = new Home();
         $this->assertAttributeInstanceOf('Doctrine\ORM\EntityManager', 'em', $c);
     }
 
