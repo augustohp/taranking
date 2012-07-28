@@ -32,10 +32,9 @@ class HomeTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructWithEntityManagerArgument()
     {
-        $container = new Container(RANKING_CONF.DS.'Doctrine.ini');
-        $mock      = $container->entityManager;
-        $c         = new Home($mock);
-        $this->assertAttributeEquals($mock, 'em', $c);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
+        $c  = new Home($em);
+        $this->assertAttributeEquals($em, 'em', $c);
     }
 
     protected function _getEntityManagerForRepositoryMock($entity, $repo)
