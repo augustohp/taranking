@@ -52,6 +52,21 @@ class MapTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider _validName
+     * @covers Ranking\Entity\Map::getNameValidator
+     */
+    public function testGetNameValidator($name)
+    {
+        try {
+            $this->assertTrue(Map::getNameValidator()->assert($name));
+        } catch (Nested $e) {
+            $this->fail('Validation Exception: '.$e->getFullMessage());
+        } catch (Exception $e) {
+            $this->fail('Ugly Exception: '.$e);
+        }
+    }
+
+    /**
+     * @dataProvider _validName
      * @depends testGetName
      * @covers Ranking\Entity\Map::setName
      */
