@@ -105,6 +105,17 @@ class TeamTest extends PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider _validRace
+     * @covers Ranking\Entity\Team::filterRace
+     */
+    public function testFilterRace($race)
+    {
+        $expect = ucfirst(strtolower($race));
+        $this->assertEquals($expect, Team::filterRace($race));
+    }
+
+    /**
+     * @depends testFilterRace
+     * @dataProvider _validRace
      * @covers Ranking\Entity\Team::getRaceValidator
      */
     public function testGetRaceValidator($race)

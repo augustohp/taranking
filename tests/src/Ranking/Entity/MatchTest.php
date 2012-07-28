@@ -1,7 +1,9 @@
 <?php
+use InvalidArgumentException as Argument;
 use Ranking\Entity\Match;
 use Ranking\Entity\User;
 use Ranking\Entity\Map;
+use Ranking\Entity\Team;
 
 class MatchTest extends PHPUnit_Framework_TestCase
 {
@@ -14,6 +16,15 @@ class MatchTest extends PHPUnit_Framework_TestCase
         $this->map   = new Map();
         $this->user->setName('testbot');
         $this->map->setName('Test Dome');
+    }
+
+    /**
+     * @covers Ranking\Entity\Match::__construct
+     */
+    public function testConstruct()
+    {
+        $match = new Match();
+        $this->assertAttributeInstanceOf('Doctrine\Common\Collections\ArrayCollection', 'teams', $match);
     }
 
     /**
@@ -52,6 +63,7 @@ class MatchTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Ranking\Entity\Match::setCreator
      * @expectedException PHPUnit_Framework_Error
      */
     public function testSetCreatorWithInvalidArgument()
@@ -93,6 +105,7 @@ class MatchTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Ranking\Entity\Match::setCreated
      * @expectedException PHPUnit_Framework_Error
      */
     public function testSetCreatedWithInvalidArgument()
@@ -134,6 +147,7 @@ class MatchTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Ranking\Entity\Match::setPlayed
      * @expectedException PHPUnit_Framework_Error
      */
     public function testSetPlayedWithInvalidArgument()
@@ -170,4 +184,56 @@ class MatchTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $this->match->getTeams());
     }
+
+    public function _validTeam()
+    {
+        $team = new Team;
+        $user = new User;
+        $user->setName('testbot');
+        $team->setNumber(1)->setPlayer($user)->setRace('Arm');
+        return array(
+            array($team)
+        );
+    }
+
+    /**
+     * @dataProvider _validTeam
+     * @covers Ranking\Entity\Match::getTeamValidator
+     */
+    public function testGetTeamValidator($team)
+    {
+        try {
+            Match::getTeamValidator()->assert($team);
+        } catch (Argument $e) {
+            $this->fail('Validation Exception: '.$e->getFullMessage());
+        } catch (Exception $e) {
+            $this->fail('Ugly Exception: '.$e->getMessage());
+        }
+    }
+
+    /**
+     * @depends testGetTeamValidator
+     * @dataProvider _validTeam
+     * @covers Ranking\Entity\Match::addTeam
+     */
+    public function testAddTeamWithValidArgument($team)
+    {
+        $instance = $this->match->addTeam($team);
+        $this->assertEquals($this->match, $instance, 'Fluent interface failed');
+        $this->assertAttributeContains($team, 'teams', $this->match, 'Team not found in ArrayCollection');
+        return array($this->match, $team);
+    }
+
+    /**
+     * @dataProvider _validTeam
+     * @depends testGetTeamValidator
+     * @expectedException InvalidArgumentException
+     * @covers Ranking\Entity\Match::addTeam
+     */
+    public function testAddTeamWithARepeatedValue($team)
+    {
+        $this->match->addTeam($team)->addTeam($team);
+    }
+
+
 }

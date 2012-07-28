@@ -2,6 +2,7 @@
 namespace Ranking\Entity;
 
 use \DateTime;
+use \InvalidArgumentException as Argument;
 use Respect\Validation\Validator as V;
 use Ranking\Entity\Map;
 use Ranking\Entity\User;
@@ -111,5 +112,25 @@ class Match
     public function getTeams()
     {
         return $this->teams;
+    }
+
+    public static function getTeamValidator()
+    {
+        return V::attribute(
+            'player', V::instance('Ranking\Entity\User'),
+            'race', Team::getRaceValidator(),
+            'number', Team::getNumberValidator()
+        );
+    }
+
+    public function addTeam(Team $team)
+    {
+        if ($this->teams->contains($team) ) {
+            throw new Argument('Team already exists in collection');
+        }
+        self::getTeamValidator()->assert($team);
+        $this->teams[] = $team;
+        $team->setMatch($this);
+        return $this;
     }
 }
