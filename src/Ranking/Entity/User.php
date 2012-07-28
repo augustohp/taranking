@@ -45,6 +45,18 @@ class User
         return 'Ranking\Entity\User: '.$this->getName();
     }
 
+    public static function getIdValidator()
+    {
+        return V::int()->min(1, true)->setName('User Id');
+    }
+
+    public function setId($id)
+    {
+        self::getIdValidator()->assert($id);
+        $this->id = $id;
+        return $this;
+    }
+
     public function getId()
     {
         return $this->id;
