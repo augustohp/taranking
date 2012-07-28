@@ -14,6 +14,7 @@ use Ranking\Entity\Match;
 use Ranking\Entity\Team;
 use Ranking\Entity\User;
 use Ranking\Entity\Map;
+use Ranking\Domain\Transaction\UsersToTeams;
 
 class Post implements Routable
 {
@@ -29,6 +30,8 @@ class Post implements Routable
             $em        = $container->entityManager;
         }
         $this->em = $em;
+        // Load custom validator into Respect namespace
+        class_exists('Ranking\Validation\Rules\Id', true);
     }
 
     /**
@@ -36,10 +39,19 @@ class Post implements Routable
      */
     public function post()
     {
-        $user_id  = filter_input(INPUT_POST, 'creator_id');
-        $players  = filter_input(INPUT_POST, 'players');
-        $idValidator = User::getIdValidator();
-        $idValidator->setName('Logged User')->assert($user_id);
-        V::each($idValidator)->setName('Player')->assert($players);
+        V::key('user', V::instance('Ranking\Entity\User')->setName('Logged user'))->assert($_SESSION);
+        $logged_user_id      = $_SESSION['user']->getId();
+        $user_id             = filter_input(INPUT_POST, 'creator_id');
+        $players             = filter_input(INPUT_POST, 'players');
+        $loggedUserValidator = V::not(V::equals($logged_user_id));
+        V::id()->setName('Logged User')->assert($user_id);
+        V::each(V::id())->setName('Player')->assert($players);
+        V::each($loggedUserValidator)->setName('Logged user')->assert($players);
+        $script = new UsersToTeams;
+        foreach ($players as $user_id) {
+            $user = new User;
+            $user->setId($user_id);
+            $script->addUser($user);
+        }
     }
 }
