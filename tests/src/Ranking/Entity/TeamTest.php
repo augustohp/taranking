@@ -95,7 +95,11 @@ class TeamTest extends PHPUnit_Framework_TestCase
     {
         return array(
             array('Arm'),
-            array('Core')
+            array('Core'),
+            array('arm'),
+            array('core'),
+            array('ARM'),
+            array('CORE')
         );
     }
 
@@ -106,6 +110,7 @@ class TeamTest extends PHPUnit_Framework_TestCase
     public function testGetRaceValidator($race)
     {
         try {
+            $race = Team::filterRace($race);
             Team::getRaceValidator()->assert($race);
         } catch (Argument $e) {
             $this->fail('Validation Exception: '.$e->getFullMessage());
@@ -121,6 +126,7 @@ class TeamTest extends PHPUnit_Framework_TestCase
      */
     public function testSetRaceWithValidArgument($race)
     {
+        $race     = Team::filterRace($race);
         $instance = $this->team->setRace($race);
         $this->assertEquals($this->team, $instance);
         $this->assertAttributeEquals($race, 'race', $this->team);
@@ -133,8 +139,8 @@ class TeamTest extends PHPUnit_Framework_TestCase
     public function testGetRace()
     {
         $races = $this->_validRace();
-        $races = array_pop($races);
-        $race  = array_pop($races);
+        $races = array_shift($races);
+        $race  = array_shift($races);
         $this->team->setRace($race);
         $this->assertEquals($race, $this->team->getRace());
     }
