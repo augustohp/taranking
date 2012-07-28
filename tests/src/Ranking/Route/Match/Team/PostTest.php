@@ -18,7 +18,9 @@ class PostTest extends \PHPUnit_Framework_TestCase
         global $header, $globals;
 
         $header = $globals = array();
-        $globals['creator_id'] = 1;
+        $_SESSION['user'] = $user = new User;
+        $user->setId(1);
+        $globals['creator_id'] = 2;
     }
 
     /**
@@ -49,7 +51,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
     {
         global $globals;
 
-        unset($globals['creator_id']);
+        unset($_SESSION['user']);
         $c = new Post();
         $c->post();
     }
@@ -72,7 +74,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
         global $globals;
 
         $globals['teams']   = $teams   = array();
-        $globals['players'] = $players = array(1, 2, 3, 4, 5, 6);
+        $globals['players'] = $players = array(2, 3, 4, 5, 6);
         $c                  = new Post();
         $response           = $c->post();
     }
