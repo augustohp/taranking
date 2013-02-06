@@ -31,6 +31,7 @@ $r->get('/users/*', 'Ranking\Route\Home')->by($authenticated)->when($validUserna
 $r->get('/maps'   , 'Ranking\Route\Map\All');
 $r->post('/maps'  , 'Ranking\Route\Map\Post')->by($authenticated);
 $r->post('/maps/*', 'Ranking\Route\Map\One');
+$r->get('/matches/create', 'Ranking\Route\Match\Create');
 
 // Routines --------------------------------------------------------------------
 

@@ -1,0 +1,21 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Create a new Match{% endblock %}
+
+{% block content %}
+        <h1>Creating a new match</h1>
+
+        <fieldset>
+            <form action="/matches/create" method="get">
+
+                <label for="players">Quantity of players:</label>
+                <select id="players" name="players">
+{% for i in range(2, 10) %}
+                    <option value="{{ i }}">{{ i }}</option>
+{% endfor %}
+                </select>
+
+                <input type="submit" value="Continue">
+            </form>
+        </fieldset>
+{% endblock %}

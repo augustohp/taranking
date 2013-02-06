@@ -1,0 +1,41 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}New Match{% endblock %}
+
+{% block content %}
+        <h1>New Match</h1>
+
+        <p>
+            Played a match and want everyone to know about? You've come to the
+            right place.
+        </p>
+
+        <fieldset>
+            <legend>Want to see your own?</legend>
+
+            <form action="/matches" method="post">
+{% if alert %}
+                <p class="alert"> {{ alert }} </p>
+
+{% endif %}
+                <input type="hidden" id="match_id" name="match_name" value="{{ match.id }}">
+
+                <label for="match_map">Map:</label>
+                <select id="match_map" name="match_map">
+                    <option value="">In which map you player?</option>
+{% for map in maps %}
+                    <option value="{{ map.id }}">{{ map.name }}</option>
+{% endfor; %}
+                </select>
+                <p>
+                    The map is not here? Maybe you want to 
+                    <a href="/maps">register</a> it.
+                </p>
+
+                <label for="match_player">Who (human) played that game besides you?</label>
+                <input type="text" id="match_player" name="match_player" />
+
+                <input type="submit" value="Register this match in ranking">
+            </form>
+        </fieldset>
+{% endblock %}

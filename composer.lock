@@ -1,45 +1,694 @@
 {
-    "hash": "2af74ba0d661d37df2050295707d8c16",
+    "hash": "277eb2396bdc0a5353acd45de597fe3b",
     "packages": [
         {
-            "package": "EHER/PHPUnit",
-            "version": "1.6"
+            "name": "EHER/PHPUnit",
+            "version": "1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EHER/phpunit-all-in-one",
+                "reference": "1.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/EHER/phpunit-all-in-one/zipball/1.6",
+                "reference": "1.6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/finder": "*"
+            },
+            "time": "2012-05-24 01:46:24",
+            "bin": [
+                "bin/dbunit",
+                "bin/phpcov",
+                "bin/phpcpd",
+                "bin/phpdcd",
+                "bin/phploc",
+                "bin/phpunit",
+                "bin/phpunit-skelgen"
+            ],
+            "type": "library",
+            "description": "Unofficial version of PHPUnit to be handled with Composer."
         },
         {
-            "package": "Respect/Config",
-            "version": "0.3.1"
+            "name": "Respect/Config",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Respect/Config",
+                "reference": "0.3.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Respect/Config/zipball/0.3.1",
+                "reference": "0.3.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-02-01 18:53:31",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Respect\\Config": "library"
+                }
+            },
+            "license": [
+                "New BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Alexandre Gomes Gaigalas",
+                    "email": "alexandre@gaigalas.net",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Augusto Pascutti",
+                    "email": "augusto@phpsp.org.br",
+                    "homepage": null,
+                    "role": null
+                }
+            ],
+            "description": "A powerful, small, deadly simple configurator and dependency injection container made to be easy.",
+            "homepage": "https://github.com/Respect/Config",
+            "keywords": [
+                "config",
+                "dependency injection",
+                "dic",
+                "respect"
+            ]
         },
         {
-            "package": "Respect/Rest",
-            "version": "0.4.8"
+            "name": "Respect/Rest",
+            "version": "0.4.8",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/Respect/Rest.git",
+                "reference": "0.4.8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Respect/Rest/zipball/0.4.8",
+                "reference": "0.4.8",
+                "shasum": ""
+            },
+            "time": "2012-06-17 11:14:06",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Respect\\Rest": "library/"
+                }
+            },
+            "license": [
+                "BSD Style"
+            ],
+            "authors": [
+                {
+                    "name": "Henrique Moody",
+                    "email": "henriquemoody@gmail.com",
+                    "homepage": "http://henriquemoody.com/",
+                    "role": null
+                },
+                {
+                    "name": "Alexandre Gomes Gaigalas",
+                    "email": "alexandre@gaigalas.net",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Augusto Pascutti",
+                    "email": "contato@augustopascutti.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Alexandre Gomes Gaigalas",
+                    "email": "alganet@alganet-workstation.(none)",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "kleberhs007",
+                    "email": "kleberhs007@yahoo.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Leandro",
+                    "email": "lleitep3@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Rogerio Prado de Jesus",
+                    "email": "rogeriopradoj@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Alexandre Gaigalas",
+                    "email": "alexandre@gaiaglas.net",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Anderson Casimiro",
+                    "email": "duodraco@duo.draco",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Anderson Casimiro",
+                    "email": "duodraco@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Augusto Pascutti",
+                    "email": "augusto@phpsp.org.br",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "eduardomarcate",
+                    "email": "eduardo@marcate.info",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Eduardo M. Garcia",
+                    "email": "eduardo@debian.elam",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Nick Rawe",
+                    "email": "nickrawe2@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Pablo Lacerda de Miranda",
+                    "email": "pablolmiranda@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "wesleyvicthor",
+                    "email": "w.v.mendes.s@gmail.com",
+                    "homepage": null,
+                    "role": null
+                }
+            ],
+            "description": "Thin controller for RESTful applications"
         },
         {
-            "package": "Respect/Validation",
-            "version": "0.4.4"
+            "name": "Respect/Validation",
+            "version": "0.4.4",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/Respect/Validation.git",
+                "reference": "0.4.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/Respect/Validation/zipball/0.4.4",
+                "reference": "0.4.4",
+                "shasum": ""
+            },
+            "time": "2012-04-24 19:52:45",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Respect\\Validation": "library/"
+                }
+            },
+            "license": [
+                "BSD Style"
+            ],
+            "authors": [
+                {
+                    "name": "Henrique Moody",
+                    "email": "henriquemoody@gmail.com",
+                    "homepage": "http://henriquemoody.com/",
+                    "role": null
+                },
+                {
+                    "name": "Alexandre Gomes Gaigalas",
+                    "email": "alexandre@gaigalas.net",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Augusto Pascutti",
+                    "email": "contato@augustopascutti.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Alexandre (@alganet)",
+                    "email": "alganet@alganet-laptop.(none)",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Alexandre Gaigalas",
+                    "email": "alganet@alganet-workstation.(none)",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Carlos André Ferrari",
+                    "email": "andre@andre.(none)",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Carlos André Ferrari",
+                    "email": "caferrari@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Devin Torres",
+                    "email": "devin@devintorres.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Emerson Carvalho",
+                    "email": "emerson.broga@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Fábio da Silva Ribeiro",
+                    "email": "fabiorphp@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Jair Henrique",
+                    "email": "jair.henrique@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Jayson Reis",
+                    "email": "jayson.reis@sabbre.com.br",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Jayson Reis",
+                    "email": "santosdosreis@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Jean Pimentel",
+                    "email": "jeanfap@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "kleberhs007",
+                    "email": "kleberhs007@yahoo.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Leandro",
+                    "email": "lleitep3@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Marcelo Araujo",
+                    "email": "msaraujo@php.net",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Michael Klishin",
+                    "email": "michaelklishin@me.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Morf",
+                    "email": "i@morfi.ru",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Rogerio Prado de Jesus",
+                    "email": "rogeriopradoj@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Torben Brodt",
+                    "email": "t.brodt@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "unknown",
+                    "email": "kolyshkin@.sqlmaze.local",
+                    "homepage": null,
+                    "role": null
+                }
+            ],
+            "description": "The most awesome validation engine ever created for PHP"
         },
         {
-            "package": "doctrine/common",
-            "version": "2.2.2"
+            "name": "doctrine/common",
+            "version": "2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/common",
+                "reference": "2.2.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/doctrine/common/zipball/2.2.3",
+                "reference": "2.2.3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "time": "2012-08-29 01:04:14",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Common": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com",
+                    "homepage": "http://www.jwage.com/"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "https://github.com/schmittjoh",
+                    "role": "Developer of wrapped JMSSerializerBundle"
+                }
+            ],
+            "description": "Common Library for Doctrine projects",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "annotations",
+                "collections",
+                "eventmanager",
+                "persistence",
+                "spl"
+            ]
         },
         {
-            "package": "doctrine/dbal",
-            "version": "2.2.2"
+            "name": "doctrine/dbal",
+            "version": "2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/dbal",
+                "reference": "2.2.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/doctrine/dbal/zipball/2.2.2",
+                "reference": "2.2.2",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": ">=2.2.0,<=2.2.99",
+                "php": ">=5.3.2"
+            },
+            "time": "2012-04-13 03:56:12",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\DBAL": "lib/"
+                }
+            },
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com",
+                    "homepage": "http://www.jwage.com/",
+                    "role": null
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org",
+                    "homepage": null,
+                    "role": null
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "homepage": null,
+                    "role": null
+                }
+            ],
+            "description": "Database Abstraction Layer",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "database",
+                "dbal",
+                "persistence",
+                "queryobject"
+            ]
         },
         {
-            "package": "doctrine/orm",
-            "version": "2.2.2"
+            "name": "doctrine/orm",
+            "version": "2.2.3",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/doctrine/doctrine2.git",
+                "reference": "2.2.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/doctrine/doctrine2/zipball/2.2.3",
+                "reference": "2.2.3",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "2.2.*",
+                "doctrine/dbal": "2.2.*",
+                "ext-pdo": "*",
+                "php": ">=5.3.2"
+            },
+            "time": "2012-07-29 04:22:34",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\ORM": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com",
+                    "homepage": "http://www.jwage.com/"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com",
+                    "homepage": "http://www.instaclick.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                }
+            ],
+            "description": "Object-Relational-Mapper for PHP",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "database",
+                "orm"
+            ]
         },
         {
-            "package": "symfony/console",
-            "version": "v2.0.16"
+            "name": "symfony/console",
+            "version": "v2.0.22",
+            "target-dir": "Symfony/Component/Console",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console",
+                "reference": "v2.0.22"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/v2.0.22",
+                "reference": "v2.0.22",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "time": "2013-01-11 13:49:52",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Console": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "http://symfony.com"
         },
         {
-            "package": "symfony/finder",
-            "version": "v2.0.15"
+            "name": "symfony/finder",
+            "version": "v2.1.7",
+            "target-dir": "Symfony/Component/Finder",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Finder",
+                "reference": "v2.1.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/Finder/archive/v2.1.7.zip",
+                "reference": "v2.1.7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "2013-01-09 08:51:07",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Finder": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "http://symfony.com"
         },
         {
-            "package": "twig/twig",
-            "version": "v1.9.0"
+            "name": "twig/twig",
+            "version": "v1.12.1",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/fabpot/Twig.git",
+                "reference": "v1.12.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/fabpot/Twig/archive/v1.12.1.zip",
+                "reference": "v1.12.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "time": "2013-01-15 20:03:52",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.12-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ]
         }
     ],
     "packages-dev": null,
