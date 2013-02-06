@@ -12,6 +12,12 @@ permission:
 composer:
 	bin/composer.phar install
 
+.composer-update:
+	bin/composer.phar self-update
+
+update: .composer-update
+	bin/composer.phar update
+
 doctrine: permission
 	bin/doctrine orm:schema-tool:update --dump-sql
 	bin/doctrine orm:schema-tool:update --force
