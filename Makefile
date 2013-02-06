@@ -23,7 +23,10 @@ test:
 	@cd tests; phpunit .
 
 testdox:
-	@cd tests; phpunit --testdox .	
+	@cd tests; phpunit --testdox .
 
 coverage:
 	@cd tests; phpunit --coverage-html=reports --coverage-text .
+
+server:
+	@cd public; php -S localhost:8081 bootstrap.php
