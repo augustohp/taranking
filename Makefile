@@ -1,29 +1,44 @@
+COMPOSER=bin/composer.phar
+PHPUNIT=bin/phpunit
+COMPOSER_ARGS=--no-ansi --profile --no-interaction
+PHPUNIT_ARGS=--verbose --configuration tests/phpunit.xml
+
 clean: permission
 	@echo "Cleans everything (database included!)"
 	bin/doctrine orm:schema-tool:drop --dump-sql
 	bin/doctrine orm:schema-tool:drop --force
+	-rm ${COMPOSER}
 
 permission:
-	chmod a+x bin/composer.phar
+	chmod a+x ${COMPOSER}
 	chmod a+x bin/doctrine
 	-chmod a+w .
 	-chmod a+rxw database.sqlite
 
+install-composer:
+	@echo "Installing (or updating) composer"
+	test -f ${COMPOSER} && ${COMPOSER} self-update || curl -sS https://getcomposer.org/installer | php -- --install-dir=bin
+
 composer:
-	bin/composer.phar install
+	${COMPOSER} install ${COMPOSER_ARGS}
 
 doctrine: permission
 	bin/doctrine orm:schema-tool:update --dump-sql
 	bin/doctrine orm:schema-tool:update --force
 
-install: permission composer doctrine
+dev: install-composer
+	${COMPOSER} install --dev ${COMPOSER_ARGS}
+
+install: permission install-composer composer doctrine
 	@echo "Fixed permissions, got dependencies and created/updated database"
 
-test:
-	@cd tests; phpunit .
+test: phpunit
 
-testdox:
-	@cd tests; phpunit --testdox .	
+phpunit:
+	${PHPUNIT} ${PHPUNIT_ARGS} tests
 
-coverage:
-	@cd tests; phpunit --coverage-html=reports --coverage-text .
+phpunit-testdox:
+	${PHPUNIT} ${PHPUNIT_ARGS} --testdox tests	
+
+phpunit-coverage:
+	${PHPUNIT} ${PHPUNIT_ARGS}--coverage-html=reports --coverage-text tests

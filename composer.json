@@ -5,8 +5,16 @@
         "Respect/Validation": "0.4.*",
         "doctrine/orm": "2.2.*",
         "twig/twig": "1.9.*",
-        "symfony/console": "2.0.*",
-        "EHER/PHPUnit": "1.6"
+        "symfony/console": "2.0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.28",
+        "behat/behat": "2.*",
+        "behat/mink": "1.4.*",
+        "behat/mink-goutte-driver": "1.0.*"
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "autoload": {
         "psr-0": {"Ranking": "src/"}

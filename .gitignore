@@ -2,3 +2,6 @@ composer
 vendor
 tests/reports
 database.sqlite
+bin/behat
+bin/phpunit
+bin/composer.phar
