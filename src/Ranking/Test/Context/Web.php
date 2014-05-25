@@ -78,6 +78,7 @@ class Web extends Behat\Context\BehatContext
 
     /**
      * @Then /^I should see "([^"]*)" on "([^"]*)"$/
+     * @Then /^I should see '([^']*)' on "([^"]*)"$/
      * @Then /^I should see "([^"]*)"$/
      */
     public function iShouldSee($expectedContent, $elementSelector="BODY")
