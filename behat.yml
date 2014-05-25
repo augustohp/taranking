@@ -1,0 +1,11 @@
+default:
+    paths:
+        features: tests/integration
+        bootstrap: %behat.paths.features%
+    context:
+        class: Ranking\Test\Context\Main
+        parameters:
+            base_url: http://localhost
+            doctrine_container: conf/Doctrine.ini
+    formatter:
+        name: progress

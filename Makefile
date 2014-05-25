@@ -1,5 +1,6 @@
 COMPOSER=bin/composer.phar
 PHPUNIT=bin/phpunit
+BEHAT=bin/behat
 COMPOSER_ARGS=--no-ansi --profile --no-interaction
 PHPUNIT_ARGS=--verbose --configuration tests/phpunit.xml
 
@@ -32,13 +33,16 @@ dev: install-composer
 install: permission install-composer composer doctrine
 	@echo "Fixed permissions, got dependencies and created/updated database"
 
-test: phpunit
+test: phpunit behat
+
+behat:
+	${BEHAT} -vvv
 
 phpunit:
 	${PHPUNIT} ${PHPUNIT_ARGS} tests
 
 phpunit-testdox:
-	${PHPUNIT} ${PHPUNIT_ARGS} --testdox tests	
+	${PHPUNIT} ${PHPUNIT_ARGS} --testdox tests
 
 phpunit-coverage:
 	${PHPUNIT} ${PHPUNIT_ARGS}--coverage-html=reports --coverage-text tests

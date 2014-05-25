@@ -5,7 +5,7 @@
 {% block content %}
         <h1>New User Registration</h1>
         {% if alerts %}
-        
+
         <ul class="alert">
             {% for message in alerts %}
                 <li>{{ message }}</li>
@@ -23,6 +23,6 @@
             <label for="passwd2">Please, repeat you password:</label>
             <input type="password" id="passwd2" name="passwd2" />
 
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" class="submit">
         </form>
 {% endblock %}
