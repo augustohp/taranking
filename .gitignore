@@ -5,3 +5,5 @@ database.sqlite
 bin/behat
 bin/phpunit
 bin/composer.phar
+.vagrant
+.DS_Store

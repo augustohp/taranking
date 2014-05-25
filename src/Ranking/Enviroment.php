@@ -14,11 +14,11 @@ class Enviroment
 {
     const DEFAULT_SALT = '4l:8_+:7|WxsE+O+JN&w_Wr$mRc?0l88oRTD$OcJuOI^Qk&852H1)%W{yc+-BmwY';
     const DEFAULT_NAME = 'development';
-    const DEFAULT_DB_HOST = '';
-    const DEFAULT_DB_USER = '';
-    const DEFAULT_DB_PASSWD = '';
+    const DEFAULT_DB_HOST = 'localhost';
+    const DEFAULT_DB_USER = 'root';
+    const DEFAULT_DB_PASSWD = 'root';
     const DEFAULT_DB_NAME = 'ranking';
-    const DEFAULT_DB_DRIVER = 'pdo_sqlite';
+    const DEFAULT_DB_DRIVER = 'pdo_mysql';
 
     protected $name;
     protected $salt;
@@ -29,7 +29,7 @@ class Enviroment
         if (!$this->name) {
             $this->name = getenv('RANKING_ENVIROMENT') ?: self::DEFAULT_NAME ;
         }
-        
+
         return $this->name;
     }
 
