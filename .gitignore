@@ -7,3 +7,4 @@ bin/phpunit
 bin/composer.phar
 .vagrant
 .DS_Store
+bin/doctrine.php

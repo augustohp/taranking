@@ -1,17 +1,17 @@
 {
     "require": {
-        "Respect/Rest": "0.4.*",
+        "Respect/Rest": "~0.5",
         "Respect/Config": "0.3.*",
-        "Respect/Validation": "0.4.*",
-        "doctrine/orm": "2.2.*",
+        "Respect/Validation": "~0.5",
+        "doctrine/orm": "~2.4",
         "twig/twig": "1.9.*",
-        "symfony/console": "2.0.*"
+        "symfony/console": "~2.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.28",
-        "behat/behat": "2.*",
-        "behat/mink": "1.4.*",
-        "behat/mink-goutte-driver": "1.0.*"
+        "phpunit/phpunit": "~3.7",
+        "behat/behat": "~2",
+        "behat/mink": "~1.5",
+        "behat/mink-goutte-driver": "~1.0"
     },
     "config": {
         "bin-dir": "bin"
