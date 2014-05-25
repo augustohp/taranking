@@ -1,11 +1,7 @@
 #!/usr/bin/env php
 <?php
+use Ranking\Cli;
 use Respect\Config\Container;
-use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
-use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
-use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Console\Helper\HelperSet;
 
 define('DS', DIRECTORY_SEPARATOR);
 require __DIR__.DS.'..'.DS.'public'.DS.'bootstrap.php';
@@ -13,11 +9,8 @@ require __DIR__.DS.'..'.DS.'public'.DS.'bootstrap.php';
 try {
     $configFile = RANKING_ROOT.DS.'conf'.DS.'Doctrine.ini';
     $container  = new Container($configFile);
-    $helperSet  = new HelperSet();
-    $helperSet->set(new ConnectionHelper($container->dbal), 'db');
-    $helperSet->set(new EntityManagerHelper($container->entityManager), 'em');
+    $application = new Cli\Application($container);
+    $application->run();
 } catch (Exception $e) {
     die('Something very wrong happened: '.$e->getMessage());
 }
-$helperSet = ($helperSet) ?: new HelperSet();
-ConsoleRunner::run($helperSet);
