@@ -38,3 +38,11 @@ Examples:
     | tbon3         | 1234     | 1234           | Password must be only alpha-numeric and have length between 6 and 45 |
     | tbon3         | 123456   |                | Passwords must be the same                                           |
 
+Scenario: Nick already in use
+    Given nick "tbon3" is in use
+    And I visit "/users/register"
+    And I input "tbon3" on "#name"
+    And I input "123456" on "#passwd"
+    And I input "123456" on "#passwd2"
+    When I click on ".submit"
+    Then I should see "User already exists!" on ".alert"

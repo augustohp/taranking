@@ -3,11 +3,11 @@ namespace Ranking\Route;
 
 use \Exception;
 use \InvalidArgumentException as Argument;
-use \PDOException;
 use Ranking\Entity\User;
 use Respect\Rest\Routable;
 use Respect\Config\Container;
 use Respect\Validation\Exceptions\AbstractNestedException as Nested;
+use Doctrine\DBAL;
 
 class Register implements Routable
 {
@@ -36,7 +36,7 @@ class Register implements Routable
             $user->setCreated(null, 'America/Sao_Paulo');
             $em->persist($user);
             $em->flush();
-            
+
             // Everything ok, log user
             $_SESSION['user'] = $user;
             header('Location: /users/'.$user->getId().'?registered=true');
@@ -46,11 +46,11 @@ class Register implements Routable
                 $vars['alerts'][] = $m;
             }
             return $vars;
-        } catch (PDOException $e) {
-            $vars['alerts'] = array('User already exists');
+        } catch (DBAL\DBALException $e) {
+            $vars['alerts'] = array('User already exists!');
             return $vars;
         } catch (Exception $e) {
-            $vars['alerts'] = array($e->getMessage());
+            $vars['alerts'] = array(get_class($e).'-'.$e->getMessage());
             return $vars;
         }
     }
