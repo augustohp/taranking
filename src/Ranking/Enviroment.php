@@ -47,7 +47,7 @@ class Enviroment
             $this->db = new StdClass;
             $this->db->host = getenv('RANKING_DB_HOST') ?: self::DEFAULT_DB_HOST;
             $this->db->user = getenv('RANKING_DB_USER') ?: self::DEFAULT_DB_USER;
-            $this->db->passwd = getenv('RANKING_DB_PASSWD') ?: self::DEFAULT_DB_PASSWD;
+            $this->db->passwd = (false === getenv('RANKING_DB_PASSWD')) ? self::DEFAULT_DB_PASSWD : getenv('RANKING_DB_PASSWD');
             $this->db->name = getenv('RANKING_DB_NAME') ?: self::DEFAULT_DB_NAME;
             $this->db->driver = getenv('RANKING_DB_DRIVER') ?: self::DEFAULT_DB_DRIVER;
         }

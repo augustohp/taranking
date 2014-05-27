@@ -2,8 +2,25 @@ language: php
 script: make test
 
 php:
-  - 5.3
-  - 5.4
+    - 5.4
+    - 5.5
+
+env:
+    - RANKING_ENVIRONMENT=travis_mysql RANKING_DB_HOST=127.0.0.1 RANKING_DB_USER=root RANKING_DB_PASSWD=root RANKING_DB_DRIVER=pdo_mysql RANKING_DB_NAME=taranking_ci
+    #- RANKING_ENVIRONMENT=travis_sqlite RANKING_DB_HOST="" RANKING_DB_USER="" RANKING_DB_PASSWD="" RANKING_DB_DRIVER=pdo_sqlite
 
 before_script:
-  - "make install"
+    # Apache + PHP-FPM
+    - sudo apt-get install apache2 libapache2-mod-fastcgi
+    - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+    - sudo a2enmod rewrite actions fastcgi alias
+    - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+    - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+    - sudo cp -f build/travis-ci-apache /etc/apache2/sites-available/default
+    - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
+    - sudo service apache2 restart
+    # MySQL creation
+    - mysql -e 'CREATE DATABASE taranking_ci'
+    - mysqladmin -uroot password root
+    # Composer dependencies installation and database tables creation/update
+    - make install

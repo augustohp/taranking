@@ -1,7 +1,7 @@
 COMPOSER=bin/composer.phar
 PHPUNIT=bin/phpunit
 BEHAT=bin/behat
-COMPOSER_ARGS=--no-ansi --profile --no-interaction
+COMPOSER_ARGS=--no-ansi --profile --no-interaction --quiet
 PHPUNIT_ARGS=--verbose --configuration tests/phpunit.xml
 
 clean: permission
@@ -30,7 +30,7 @@ doctrine: permission
 dev: install-composer
 	${COMPOSER} install --dev ${COMPOSER_ARGS}
 
-install: permission install-composer composer doctrine
+install: install-composer permission composer doctrine
 	@echo "Fixed permissions, got dependencies and created/updated database"
 
 test: phpunit behat

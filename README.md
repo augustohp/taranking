@@ -1,4 +1,4 @@
-Total Annihilation Ranking [![Build Status](https://secure.travis-ci.org/augustohp/taranking.png)](http://travis-ci.org/augustohp/taranking)
+Total Annihilation Ranking [![Build Status](https://travis-ci.org/augustohp/taranking.svg?branch=master)](http://travis-ci.org/augustohp/taranking)
 ==========================
 
 A basic API for ranking players in [*Total Annihilation*](http://tauniverse.com) games.
@@ -28,7 +28,7 @@ system, inside the */public* folder.
 
 The *Document Root* should be pointed to */public*.
 
-To install the project dependencies (they are *necessary*), run 
+To install the project dependencies (they are *necessary*), run
 [Composer's](http://getcomposer.org) installation command inside the project
 directory as follow:
 
