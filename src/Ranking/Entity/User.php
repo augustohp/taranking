@@ -5,7 +5,7 @@ use \DateTime;
 use \DateTimeZone;
 use \Exception;
 use \InvalidArgumentException as Argument;
-use Respect\Validation\Validator as V;
+use Ranking\Validation\Validator as V;
 
 /**
  * @Entity
@@ -13,9 +13,9 @@ use Respect\Validation\Validator as V;
  */
 class User
 {
-    /** 
+    /**
      * @Id
-     * @Column(type="integer") 
+     * @Column(type="integer")
      * @GeneratedValue
      */
     protected $id;
@@ -45,16 +45,9 @@ class User
         return $this->id;
     }
 
-    public static function getNameValidator()
-    {
-        $allowedChars = '-_';
-        return V::alnum($allowedChars)->noWhitespace()->length(3, 45)
-                ->setName('Nick');
-    }
-
     public function setName($string)
     {
-        self::getNameValidator()->assert($string);
+        v::nick()->assert($string);
         $this->name = $string;
         return $this;
     }
@@ -66,10 +59,7 @@ class User
 
     public function setPassword($plaintext)
     {
-        if (!V::alnum()->length(6, 45)->validate($plaintext)) {
-            $msg = 'Password must be only alpha-numeric and have length between 6 and 45';
-            throw new Argument($msg);
-        }
+        v::password()->assert($plaintext);
         $this->password = $this->hashPassword($plaintext);
         return $this;
     }
@@ -124,7 +114,7 @@ class User
         } catch (Exception $e) {
             throw new Argument('Unknown or bad timezone: '.$mixed, 0);
         }
-        
+
         return $this;
     }
 

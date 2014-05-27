@@ -46,3 +46,7 @@ phpunit-testdox:
 
 phpunit-coverage:
 	${PHPUNIT} ${PHPUNIT_ARGS}--coverage-html=reports --coverage-text tests
+
+wip:
+	${PHPUNIT} ${PHPUNIT_ARGS} --group wip tests
+	${BEHAT} --tags wip -vvv

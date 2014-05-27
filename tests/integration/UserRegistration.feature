@@ -34,9 +34,9 @@ Examples:
     | Nick          | Password | Password Check | Message                                                |
     | a             | 123456   | 123456         | must have a length between 3 and 45                    |
     | a##           | 123456   | 123456         | must contain only letters (a-z), digits (0-9) and "-_" |
-    | tbon3         |          |                | Password must be only alpha-numeric and have length between 6 and 45 |
-    | tbon3         | 1234     | 1234           | Password must be only alpha-numeric and have length between 6 and 45 |
-    | tbon3         | 123456   |                | Passwords must be the same                                           |
+    | tbon3         |          |                | must not be empty                                      |
+    | tbon3         | 1234     | 1234           | must have a length between 6 and 45                    |
+    | tbon3         | 123456   |                | Passwords must be the same                             |
 
 Scenario: Nick already in use
     Given nick "tbon3" is in use
